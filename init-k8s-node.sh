@@ -68,6 +68,8 @@ sudo usermod -aG docker $USER
 ip link
 sudo cat /sys/class/dmi/id/product_uuid
 
+### install nfs client for persistentvolume using NFS
+sudo apt-get install -y nfs-common
 
 ### join k8s cluster
 #sudo kubeadm join xxx.xxx.xxx.xxx:xxx --token xxxxxxx --discovery-token-ca-cert-hash sha256:xxxxxx
