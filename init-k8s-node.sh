@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euxv
 
-### 以下を今回作成するk8s worker nodeから実行する。
+### Exec this script from K8s worker node.
 
 
 ## git
@@ -68,8 +68,14 @@ sudo usermod -aG docker $USER
 ip link
 sudo cat /sys/class/dmi/id/product_uuid
 
+
 ### install nfs client for persistentvolume using NFS
 sudo apt-get install -y nfs-common
+
+
+### install jq for kubectl parse
+sudo apt-get install -y jq
+
 
 ### join k8s cluster
 #sudo kubeadm join xxx.xxx.xxx.xxx:xxx --token xxxxxxx --discovery-token-ca-cert-hash sha256:xxxxxx
