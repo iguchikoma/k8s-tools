@@ -31,11 +31,26 @@ EOF
 
 }
 
+# Setup Docker loggging driver
+function setup-docker-logging-driver() {
+  cat > /etc/docker/daemon.json <<EOF
+{
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "1k", # Max size of the log files.
+        "max-file": "5" # The maximum number of log files that can be present.
+    }
+}
+EOF
+
+}
+
 ########### Main Function ###########
 function main() {
   echo "Start to configure instance for kubernetes log rotate"
 
   setup-logrotate
+  setup-docker-logging-driver
 
   echo "Done for the configuration for kubernetes log rotate"
 }
